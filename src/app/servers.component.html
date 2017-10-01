@@ -1,0 +1,48 @@
+  <div class="col-lg-6">
+  <div class="input-group">
+  <input type="text" class="form-control" placeholder="Add new server" autofocus=""  #hostname (keyup.enter)="addServer(hostname.value)">
+  <span class="input-group-btn">
+    <button class="btn btn-primary" type="button" (click)="addServer(hostname.value)" >Add</button>
+  </span>
+  </div>
+  </div>
+  <!-- <section class="main" *ngIf="servers.length > 0"> -->
+
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Hostname</th>
+            <th>ip</th>
+            <th>server users</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let server of servers">
+        <th>
+          {{server.Hostname}}
+        </th>
+        <th>
+          {{server.Ip}}
+        </th>
+        <th>
+          {{server.ServerUsers}}
+        </th>
+        <th>
+        <button type="button" class="btn btn-default btn-default" (click)="removeServer(server)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  <!-- </section> -->
+
+
+  <!-- <footer class="footer" *ngIf="servers.length > 0">
+    <span class="server-count"><strong>{{servers.length}}</strong> {{servers.length == 1 ? 'item' : 'items'}} left</span>
+  </footer> -->
+
+<div>
+<button class="btn btn-primary">Test Button</button>
+</div>
