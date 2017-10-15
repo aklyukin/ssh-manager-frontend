@@ -1,9 +1,7 @@
-export class Server {
+export class User {
   Id: number;
-  Hostname: '';
-  Port: '';
-  Ip: 22;
-  ServerUsers: '';
+  UserName: '';
+  Sshkey: '';
   constructor(values: Object = {}) {
     Object.assign(this, values);
   }

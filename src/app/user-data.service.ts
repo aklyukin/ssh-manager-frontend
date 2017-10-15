@@ -2,33 +2,33 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { Server } from './server';
+import { User } from './user';
 
 @Injectable()
-export class ServerDataService {
+export class UserDataService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private serversUrl = 'api/servers';
+  private usersUrl = 'api/users';
 
   constructor(private http: Http) { }
 
-  getServers(): Promise<Server[]>{
-    return this.http.get(this.serversUrl)
+  getUsers(): Promise<User[]>{
+    return this.http.get(this.usersUrl)
                .toPromise()
-               .then(response => response.json() as Server[])
+               .then(response => response.json() as User[])
                .catch(this.handleError);
   }
 
-  createServer(hostname: string, port: number): Promise<Server> {
+  createUser(username: string, sshkey: string): Promise<User> {
     return this.http
-      .post(this.serversUrl, JSON.stringify({hostname: hostname, port: port}), {headers: this.headers})
+      .post(this.usersUrl, JSON.stringify({username: username, sshkey: sshkey}), {headers: this.headers})
       .toPromise()
-      .then(res => res.json() as Server)
+      .then(res => res.json() as User)
       .catch(this.handleError);
   }
 
-  deleteServer(id: number): Promise<void> {
+  deleteUser(id: number): Promise<void> {
     return this.http
-      .delete(this.serversUrl + '/' + id, {headers: this.headers})
+      .delete(this.usersUrl + '/' + id, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);

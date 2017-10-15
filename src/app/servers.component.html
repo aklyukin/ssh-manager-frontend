@@ -1,17 +1,21 @@
-  <div class="col-lg-6">
-  <div class="input-group">
-  <input type="text" class="form-control" placeholder="Add new server" autofocus=""  #hostname (keyup.enter)="addServer(hostname.value)">
-  <span class="input-group-btn">
-    <button class="btn btn-primary" type="button" (click)="addServer(hostname.value)" >Add</button>
-  </span>
+<form class="form-inline">
+  <div class="form-group">
+    <label>Hostname</label>
+    <input type="text" class="form-control" placeholder="Add new server" autofocus="" #hostname (keyup.enter)="addServer(hostname.value, port.value)">
   </div>
+  <div class="form-group">
+    <label>Port</label>
+    <input type="text" class="form-control" placeholder="Port" #port (keyup.enter)="addServer(hostname.value, port.value)">
   </div>
-  <!-- <section class="main" *ngIf="servers.length > 0"> -->
+  <button class="btn btn-primary" type="button" (click)="addServer(hostname.value, port.value)" >Add</button>
+</form>
 
+<div class="row">
   <table class="table">
     <thead>
         <tr>
             <th>Hostname</th>
+            <th>port</th>
             <th>ip</th>
             <th>server users</th>
             <th></th>
@@ -23,19 +27,23 @@
           {{server.Hostname}}
         </th>
         <th>
+          {{server.Port}}
+        </th>
+        <th>
           {{server.Ip}}
         </th>
         <th>
           {{server.ServerUsers}}
         </th>
         <th>
-        <button type="button" class="btn btn-default btn-default" (click)="removeServer(server)">
+        <button type="button" class="btn btn-default btn-default" (click)="deleteServer(server)">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </button>
         </th>
       </tr>
     </tbody>
   </table>
+</div>
   <!-- </section> -->
 
 
@@ -43,6 +51,3 @@
     <span class="server-count"><strong>{{servers.length}}</strong> {{servers.length == 1 ? 'item' : 'items'}} left</span>
   </footer> -->
 
-<div>
-<button class="btn btn-primary">Test Button</button>
-</div>

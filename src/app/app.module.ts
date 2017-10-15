@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule }   from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,6 +9,8 @@ import { DashboardComponent } from './dashboard.component';
 import { ServersComponent } from './servers.component';
 
 import { ServerDataService } from './server-data.service';
+import { UserDataService } from './user-data.service';
+import { UsersComponent } from './users.component';
 
 @NgModule({
   imports: [
@@ -23,16 +25,22 @@ import { ServerDataService } from './server-data.service';
       {
         path: 'servers',
         component: ServersComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
       }
     ])
   ],
   declarations: [
     AppComponent,
     DashboardComponent,
-    ServersComponent
+    ServersComponent,
+    UsersComponent
   ],
   providers: [
-    ServerDataService
+    ServerDataService,
+    UserDataService
   ],
   bootstrap: [AppComponent]
 })
